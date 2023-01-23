@@ -1,0 +1,172 @@
+## Build and Install Folders
+/build
+*/build
+/install
+/log
+*/log
+/native_build
+
+
+## Python Artifacts
+__pycache__/
+.eggs/
+
+## VCS Location for External Repos
+src/external/
+
+## C-Sharp build opject files
+**/obj/
+**/bin/
+
+## Coverage and Doxygen Artifacts
+lcov/
+.cov/
+html/
+xml/
+latex/
+.coverage*
+.msg.md
+/docs/_build
+/coverage
+lcov.base
+lcov.test
+lcov.total
+lcov.total.filtered
+
+## XCode Artifacts
+.DS_Store
+xcuserdata/
+
+## MSVC Artifacts
+.vscode/
+.vs/
+
+## CLion Artifacts
+cmake-build-debug
+.cmake-build-debug
+.idea
+
+## Clang Complete Artifacts (used by Atom)
+/.clang_complete
+/tags
+
+## Valgrind and Callgrind
+vgcore.*
+*.log
+*.out*
+
+## Vizdep
+*.dot
+*.pickle
+*.svg
+
+## X-Compile Artifacts
+target_fs/
+
+## Miscellaneous
+*.cmd
+*.tmp
+*.user
+*.db
+*.opendb
+*.swp
+*.swo
+*.gch
+*.patch
+
+## python notebook checkpoints
+*.ipynb_checkpoints/
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# editors and IDE's
+.vscode
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Specific files
+src/VimbaCPP/
+
+# Build objects
+lib/
+bin/
+build/
+docs/
+install/
+log/
+
+# Auto generated code
+cfg/cpp/
+cfg/*.cfgc
+msg_gen/
+msg/lisp/
+
+# CMake files
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+src/*/Makefile
+src/*/cmake_install.cmake
+src/*/CMakeFiles/
+
+# Eclipse temporary files
+.cproject
+.project
+.pydevproject
+
+# ctags
+.tags*
+*/.tags*
+
+# misc
+.vscode
+Vimba_5_0/
+
+# ADE home
+ade
+.Xauthority
+.bash_logout
+.bash_history
+.bashrc
+.profile
+.ssh/
+.config/
+.ros/
+.cmake/
+.cache/
+.rviz2/
