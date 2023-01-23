@@ -5,7 +5,7 @@
 /log
 */log
 /native_build
-
+/rosbags
 
 ## Python Artifacts
 __pycache__/
