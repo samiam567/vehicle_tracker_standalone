@@ -1,0 +1,11 @@
+export ADE_DOCKER_RUN_ARGS="--cap-add=SYS_PTRACE \
+                            --net=host \
+                            --privileged \
+                            --add-host ade:127.0.0.1 \
+                            -v ${HOME}/.Xauthority:/tmp/.docker.xauth:ro \
+                            -v /dev/shm:/dev/shm \
+                            -v /mnt:/mnt:rw \
+                            -e XAUTHORITY=/tmp/.docker.xauth"
+export ADE_IMAGES="
+  bng_on_vehicle_ade:latest
+"
