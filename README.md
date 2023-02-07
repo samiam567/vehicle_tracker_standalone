@@ -1,34 +1,13 @@
-# on-vehicle
+# ros2cs_ws
 
-This is the code that we actively run on the car
+This is a sample repository to help users get started with ros2 with C#
 
-## Branches
-
-### Stable
-
-the branch named "stable" is the most recent branch that we have tested and ran on the car.
-
-Other save points, such as "stable_lasvegas" contain stable branches from different points in time
-new save point branches should be created with the form "stable_'branchdescriptor'"
-
-### Dev
-
-the branch named "dev" contains the main development thread where we test new things
-
-other dev branches for specific features may be called "dev_'featurename'"
-
-## qa_dev
-this branch is for secondary quality testing after merging feature branches into dev. This code should be completely tested on simulation, and is the latest code that should be permitted to be run on actual hardware
-
-## main
-this branch is the most recent code that has been tested and verified on the actual hardware
 
 # Install instructions: Docker (Recommended):
 ## Setup:
 - install docker engine
 - clone the repo
-- **IMPORTANT** If you forgot to add `--recursive` option upon cloning, run `scripts/fix_git_submodules.sh` upon initial clone of this repository.
-`scripts/fix_git_submodules.sh` is provided to backup messed-up submodule folders and pull them again.
+- **IMPORTANT** If make sure you add `--recursive` option upon cloning
 - **IMPORTANT** Run `git submodule update --init --recursive` inside the repository directory when: *a)* Initial cloning; *b)* Checking out to a new branch; *c)* After each non recursive git pull.
 Do `git pull --recurse-submodules` and `git clone --recursive` whenever you can to ensure the submodules are populated or updated properly.
 

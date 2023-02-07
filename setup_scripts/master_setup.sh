@@ -22,8 +22,6 @@ export ROS_DISTRO=$NATIVE_ROS_DISTRO
 
 git submodule update --init
 ./setup_scripts/install_software.sh
-./setup_scripts/install_driver.sh
-./setup_scripts/hardware_interface_setup.sh
 ./setup_scripts/misc_setup.sh
 
 

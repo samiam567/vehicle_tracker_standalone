@@ -7,35 +7,19 @@ services:
     working_dir: /home/${projectName}
     build:
       context: .
-      dockerfile: Dockerfiles/on_vehicle.dockerfile
+      dockerfile: Dockerfiles/ros2cs_ws.dockerfile
       target: bng_on_vehicle
       args:
         TAG: latest
         PROJECT_NAME: ${projectName}
         ROS_DISTRO: ${rosdistro}
-    # set network=host to communicate with other containers and hardware devices on local network
-    # network_mode: "host"
-    # # set ipc=host to benefit from the low-latency kernel
-    # ipc: "host"
-    # # use nvidia runtime -- this covers the driver as well as /dev/nvidia* items.
-    # # runtime: "nvidia"
-    # devices:
-    #   # append other hardware interface paths below, if the driver is to be run within docker.
-    #   # vectornav
-    #   - /dev/ttyAP0
-    #   - /dev/ttyAP1
+
     environment:
       - "NVIDIA_VISIBLE_DEVICES=all"
       - "NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics,display"
       - "DISPLAY=${DISPLAY}"
       - "XAUTHORITY=/tmp/.docker.xauth"
       - "QT_X11_NO_MITSHM=1"
-      # don't set any implementation by default, unless the user exported.
-      # rmw_cyclonedds_cpp / rmw_fastrtps_cpp
-      #- "RMW_IMPLEMENTATION=rmw_fastrtps_cpp"
-      # TODO: domain_id is directly set. If using a vehicle_id instead is desired, change
-      # the following line to be "ROS_DOMAIN_ID=$(expr ${domain_id} \* 10 + 1)"
-      #- "ROS_DISCOVERY_SERVER=127.0.0.1:11811"
       - "ROS_DOMAIN_ID=${domain_id}"
     # simulation, logging and debug are true/false env variables.
     command: ./scripts/compose_up_cmd.sh -s ${simulation} -d ${debug} -l ${logging}
