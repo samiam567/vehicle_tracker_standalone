@@ -8,7 +8,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfiles/ros2cs_ws.dockerfile
-      target: bng_on_vehicle
+      target: ros2cs_ws
       args:
         TAG: latest
         PROJECT_NAME: ${projectName}
@@ -22,7 +22,7 @@ services:
       - "QT_X11_NO_MITSHM=1"
       - "ROS_DOMAIN_ID=${domain_id}"
     # simulation, logging and debug are true/false env variables.
-    command: ./scripts/compose_up_cmd.sh -s ${simulation} -d ${debug} -l ${logging}
+    command: bash -c "./scripts/build.sh && ./scripts/launch.sh"
     volumes:
       - ./src:/home/${projectName}/src
       - ./scripts:/home/${projectName}/scripts
@@ -31,8 +31,6 @@ services:
       - $HOME/.Xauthority:/tmp/.docker.xauth:ro
       - /dev/shm:/dev/shm
       - ./log:/home/${projectName}/log
-      # FIXME: Only uncomment these to speed things up.
+      # NOTE: These two lines may create a lot of unclean builds, but will speed up the compilation
       #- ./build:/home/${projectName}/build
       #- ./install:/home/${projectName}/install
-      # For logging to the dsu0 RAID array on the car computer
-      - /mnt:/mnt

@@ -4,10 +4,6 @@
 LAUNCH_PACKAGE=${LAUNCH_PACKAGE}
 LAUNCH_FILE="master.launch.py"
 
-# additional arguments for ros2 launch iac_launch master.launch.py
-ENABLE_LIDARS="enable_lidars:=true"
-ENABLE_CAMERAS="enable_cameras:=true"
-ENABLE_RADARS="enable_radars:=true"
 
 # if inside native_build/* folder, change current directory to workspace directory.
 if [[ $(pwd | grep "native_build") ]]; then
@@ -61,35 +57,17 @@ while getopts "r:s:m:c:l:h" flag; do
                 SIMULATION="use_sim_time:=true"
             fi
             ;;
-        c)
-            if [[ "false False FALSE 0" == *$OPTARG* ]] ; then
-                ENABLE_CAMERAS="enable_cameras:=false"
-            fi
-            ;;
-        l)
-            if [[ "false False FALSE 0" == *$OPTARG* ]] ; then
-                ENABLE_LIDARS="enable_lidars:=false"
-            fi
-            ;;
-        m)
-            if [[ "false False FALSE 0" == *$OPTARG* ]] ; then
-                ENABLE_RADARS="enable_radars:=false"
-            fi
-            ;;
+
         *)
             printf "Usage:  ./scripts/native_launch.sh [options] [package_name] [launch_file_name]\n\
-        package_name - Defaults to iac_launch\n\
-        launch_file_name - Defaults to master.launch.py\n\
+        package_name - Defaults to ${LAUNCH_PACKAGE} \n\
+        launch_file_name - Defaults to ${LAUNCH_FILE}\n\
         \n\
         Available options:\n\
         [-h] - Displays this message.\n\
         [-r ROS_DOMAIN_ID] - Sets ROS_DOMAIN_ID. Defaults to 'domain_id' in .env file.\n\
         [-s true|false] - Sets simulation flag. Defaults to 'simulation' variable in .env file.\n\
-        \n\
-        The following parameters are effective only when used with iac_launch/launch/master.launch.py:\n\
-        [-c true|false] - Enables/Disables camera launch. Defaults to true.\n\
-        [-l true|false] - Enables/Disables lidar launch. Defaults to true.\n\
-        [-m true|false] - Enables/Disables radar launch. Defaults to true.\n"
+        "
             exit 0
             ;;
     esac
@@ -98,11 +76,6 @@ shift $((OPTIND-1))
 
 LAUNCH_PACKAGE=${1:-${LAUNCH_PACKAGE}}
 LAUNCH_FILE=${2:-${LAUNCH_FILE}}
-
-ADDITIONAL_LAUNCH_ARGS=""
-if [[ LAUNCH_PACKAGE == "iac_launch" ]] && [[ LAUNCH_FILE == "master.launch.py" ]]; then
-    ADDITIONAL_LAUNCH_ARGS="${ENABLE_LIDARS} ${ENABLE_CAMERAS} ${ENABLE_RADARS}"
-fi
 
 echo "launching"
 

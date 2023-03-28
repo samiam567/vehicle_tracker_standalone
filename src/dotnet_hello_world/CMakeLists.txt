@@ -29,7 +29,11 @@ find_package(rosidl_generator_cs REQUIRED)
 set(NUGET_PKGS_BASE ${PROJECT_BINARY_DIR}/../../../external/nuget_packages)
 
 
-set(CSHARP_TARGET_FRAMEWORK "netcoreapp3.1")
+set(CSBUILD_TOOL "DotNetCore")
+set(CSHARP_TARGET_FRAMEWORK "net6.0")
+
+
+
 find_package(DotNETExtra REQUIRED)
 
 set(_assemblies_dep_dlls
@@ -38,9 +42,15 @@ set(_assemblies_dep_dlls
     ${std_msgs_ASSEMBLIES_DLL}
     ${sensor_msgs_ASSEMBLIES_DLL}
     ${builtin_interfaces_ASSEMBLIES_DLL}
+
+    # for custom messages ex: blackandgold_msgs
     # ${blackandgold_msgs_ASSEMBLIES_DLL}
+
+    # nuget packages
     ${NUGET_PKGS_BASE}/MathNet.Numerics.dll
 )
+
+include(CPack)
 
 add_dotnet_executable(ros2cs_talker
   ROS2Talker.cs
@@ -77,5 +87,4 @@ install_dotnet(ros2cs_listener DESTINATION lib/${PROJECT_NAME}/dotnet)
 install_dotnet(ros2cs_talker DESTINATION lib/${PROJECT_NAME}/dotnet)
 install_dotnet(ros2cs_performance_talker DESTINATION lib/${PROJECT_NAME}/dotnet)
 install_dotnet(ros2cs_performance_listener DESTINATION lib/${PROJECT_NAME}/dotnet)
-
 ament_package()
