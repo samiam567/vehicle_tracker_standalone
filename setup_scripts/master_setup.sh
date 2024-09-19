@@ -1,9 +1,5 @@
 #!/bin/bash
-##################################
-#
-#     MODIFICATION IN PROGRESS
-#
-##################################
+
 
 echo ""
 echo "MUST HAVE ROS INSTALLED BEFORE RUNNING THIS SCRIPT"
@@ -21,8 +17,9 @@ fi
 export ROS_DISTRO=$NATIVE_ROS_DISTRO
 
 git submodule update --init
+
 ./setup_scripts/install_software.sh
-./setup_scripts/misc_setup.sh
+
 
 
 git lfs pull

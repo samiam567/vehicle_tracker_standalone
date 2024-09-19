@@ -12,6 +12,7 @@ sudo apt update && sudo apt install -y curl gnupg lsb-release
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
+# basics and ros2 building dependencies
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install --ignore-missing -y \
     build-essential \
@@ -38,7 +39,7 @@ export LANG=en_US.UTF-8
 rosdep init && rosdep update --rosdistro $ROS_DISTRO
 
 
-
+# dotnet dependencies
 ubuntu_release=$(lsb_release -d | sed 's/.*Ubuntu \(\)/\1/g')
 if [[ ${ubuntu_release} == *20.04* ]]; then
     # Install .NET core
