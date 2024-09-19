@@ -1,0 +1,6 @@
+[submodule "src/interface/blackandgold_msgs"]
+	path = src/interface/blackandgold_msgs
+	url = git@github.com:Purdue-AI-Racing/blackandgold_msgs.git
+[submodule "src/interface/autoware_auto_msgs"]
+	path = src/interface/autoware_auto_msgs
+	url = git@github.com:tier4/autoware_auto_msgs.git

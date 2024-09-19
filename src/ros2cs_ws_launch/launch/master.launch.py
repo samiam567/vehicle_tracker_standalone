@@ -26,9 +26,16 @@ def generate_launch_description():
         output="screen",
     )
 
+    vehicle_tracker = Node(
+        package='multivehicle_awareness',
+        executable='vehicle_tracker',
+        output='screen',
+    )
+
     launch_description = [
         ros2cs_talker,
         ros2cs_listener,
+        vehicle_tracker,
     ]
 
     return LaunchDescription(launch_description)
